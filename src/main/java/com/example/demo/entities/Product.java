@@ -16,7 +16,7 @@ import jakarta.persistence.Table;
 
 @Entity
 @Table(name = "tb_product")
-public class Products implements Serializable {
+public class Product implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
@@ -31,10 +31,10 @@ public class Products implements Serializable {
 	@JoinTable(name = "tb_procuct_category", joinColumns = @JoinColumn(name = "product_id"), inverseJoinColumns = @JoinColumn(name = "category_id"))
 	private Set<Category> categories = new HashSet<>();
 
-	public Products() {
+	public Product() {
 	}
 
-	public Products(Long id, String name, String description, Double price, String imgUrl) {
+	public Product(Long id, String name, String description, Double price, String imgUrl) {
 		super();
 		this.id = id;
 		this.name = name;
@@ -100,7 +100,7 @@ public class Products implements Serializable {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		Products other = (Products) obj;
+		Product other = (Product) obj;
 		return Objects.equals(id, other.id);
 	}
 

@@ -4,7 +4,7 @@ import java.io.Serializable;
 import java.util.Objects;
 
 import com.example.demo.entities.Order;
-import com.example.demo.entities.Products;
+import com.example.demo.entities.Product;
 
 import jakarta.persistence.Embeddable;
 import jakarta.persistence.JoinColumn;
@@ -17,7 +17,10 @@ public class OrderItemPK implements Serializable {
 	@ManyToOne
 	@JoinColumn(name = "order_id")
 	private Order order;
-	private Products products;
+	
+	@ManyToOne
+	@JoinColumn(name = "product_id")
+	private Product product;
 	
 	public Order getOrder() {
 		return order;
@@ -25,16 +28,18 @@ public class OrderItemPK implements Serializable {
 	public void setOrder(Order order) {
 		this.order = order;
 	}
-	public Products getProduct() {
-		return products;
+	public Product getProduct() {
+		return product;
 	}
-	public void setProduct(Products product) {
-		this.products = product;
+	public void setProduct(Product product) {
+		this.product = product;
 	}
+	
 	@Override
 	public int hashCode() {
-		return Objects.hash(order, products);
+		return Objects.hash(order, product);
 	}
+	
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)
@@ -44,7 +49,7 @@ public class OrderItemPK implements Serializable {
 		if (getClass() != obj.getClass())
 			return false;
 		OrderItemPK other = (OrderItemPK) obj;
-		return Objects.equals(order, other.order) && Objects.equals(products, other.products);
+		return Objects.equals(order, other.order) && Objects.equals(product, other.product);
 	}
 
 	

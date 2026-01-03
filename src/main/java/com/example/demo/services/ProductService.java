@@ -7,7 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.example.demo.course.repositories.ProductRepository;
-import com.example.demo.entities.Products;
+import com.example.demo.entities.Product;
 
 @Service
 public class ProductService {
@@ -15,12 +15,12 @@ public class ProductService {
 	@Autowired
 	private ProductRepository repository;
 
-	public List<Products> findALL() {
+	public List<Product> findALL() {
 		return repository.findAll();
 	}
 
-	public Products findById(Long id) {
-		Optional<Products> obj = repository.findById(id);
+	public Product findById(Long id) {
+		Optional<Product> obj = repository.findById(id);
 		return obj.get();
 	}
 }
